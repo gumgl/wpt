@@ -30,7 +30,7 @@ Field 24 : Proximity Symbol Name*/
 
 async function onload() {
 
-  var [lat, long] = window.location.search.substring(1).split(',');
+  var [lat, long] = window.location.search.substring(1).split(',').map(parseFloat);
 
   const response = await fetch("https://api.open-elevation.com/api/v1/lookup?locations=" + lat + "," + long);
   const jsonData = await response.json();
@@ -41,7 +41,7 @@ async function onload() {
   var wptFileText = "G  WGS 84\n\
 U  1\n\
 W \n\
-W  LZ A "+lat+"º"+(lat>0?'N':'S')+" "+long+"º"+(long>0?'E':'W')+" 25-FEB-2023 07:52:10 "+altitudeMeters+" TeamLZ\n\
+W  LZ A "+Math.abs(lat)+"º"+(lat>0?'N':'S')+" "+Math.abs(long)+"º"+(long>0?'E':'W')+" 25-FEB-2023 07:52:10 "+altitudeMeters+" TeamLZ\n\
 w Waypoint,,,,,,,,,";
 
   const blob = new Blob([wptFileText], { type: 'text/plain' });
