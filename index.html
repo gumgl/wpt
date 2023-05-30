@@ -41,10 +41,10 @@ async function onload() {
   var wptFileText = "G  WGS 84\n\
 U  1\n\
 W \n\
-W  LZ A "+lat+"º"+(lat>0?'N':'S'+" "+long+"º"+(long>0?'E':'W'+" 25-FEB-2023 07:52:10 "+altitudeMeters+" TeamLZ\n\
+W  LZ A "+lat+"º"+(lat>0?'N':'S')+" "+long+"º"+(long>0?'E':'W')+" 25-FEB-2023 07:52:10 "+altitudeMeters+" TeamLZ\n\
 w Waypoint,,,,,,,,,";
 
-  const blob = new Blob([fileText], { type: 'text/plain' });
+  const blob = new Blob([wptFileText], { type: 'text/plain' });
 
   const url = window.URL.createObjectURL(blob);
 
